@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NavBar from './components/NavBar';
 
 const pokemonList = [
   {
@@ -50,16 +51,10 @@ const App = () => {
           alt={pokemonList[pokemonIndex].name}
         />
       )}
-
-      <button onClick={handlePreviousClick} disabled={pokemonIndex === 0}>
-        Précédent
-      </button>
-      <button
-        onClick={handleNextClick}
-        disabled={pokemonIndex === pokemonList.length - 1}
-      >
-        Suivant
-      </button>
+      <NavBar
+        handlePreviousClick={handlePreviousClick}
+        handleNextClick={handleNextClick}
+      />
     </div>
   );
 };
