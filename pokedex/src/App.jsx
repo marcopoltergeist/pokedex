@@ -1,63 +1,50 @@
+import './App.css'
+import PokemonCard from "./components/PokemonCard"
 import { useState } from "react";
-import NavBar from './components/NavBar';
+import NavBar from "./components/NavBar"
 
 const pokemonList = [
   {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "charmander",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-  },
-  {
-    name: "squirtle",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-  },
-  {
-    name: "pikachu",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  },
-  {
-    name: "mew",
-  },
-];
+      name: "bulbasaur",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    },
+    {
+      name: "charmander",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    },
+    {
+      name: "squirtle",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    },
+    {
+      name: "pikachu",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    },
+    {
+      name: "mew",
+    },
+  ];
 
-const App = () => {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
-
-  const handlePreviousClick = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex((prevIndex) => prevIndex - 1);
-    }
-  };
-
-  const handleNextClick = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex((prevIndex) => prevIndex + 1);
-    }
-  };
+  function App() {
+    const [selectedPokemon, setSelectedPokemon] = useState(pokemonList[0]);
+  
+    const handlePokemonSelection = (pokemon) => {
+      setSelectedPokemon(pokemon);
+    };
 
   return (
     <div>
-      <h1>{pokemonList[pokemonIndex].name}</h1>
-      {pokemonList[pokemonIndex].imgSrc && (
-        <img
-          src={pokemonList[pokemonIndex].imgSrc}
-          alt={pokemonList[pokemonIndex].name}
-        />
-      )}
       <NavBar
-        handlePreviousClick={handlePreviousClick}
-        handleNextClick={handleNextClick}
+        pokemonList={pokemonList}
+        handlePokemonSelection={handlePokemonSelection}
       />
+      <PokemonCard pokemon={selectedPokemon} />
     </div>
   );
-};
+}
 
-export default App;
-
+export default App
