@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
+
 function NavBar(props) {
     const { pokemonList, handlePokemonSelection } = props;
   
     const handlePokemonButtonClick = (pokemon) => {
-      handlePokemonSelection(pokemon);
-    };
+        handlePokemonSelection(pokemon);
+    
+        if (pokemon.name.toLowerCase() === "pikachu") {
+          alert("Pika Pikachu !!!");
+        }
+      };
   
     return (
       <div>
@@ -17,4 +22,5 @@ function NavBar(props) {
     );
   }
   
-  export default NavBar
+  export default NavBar;
+  

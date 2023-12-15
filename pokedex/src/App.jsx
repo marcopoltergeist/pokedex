@@ -2,6 +2,7 @@ import './App.css'
 import PokemonCard from "./components/PokemonCard"
 import { useState } from "react";
 import NavBar from "./components/NavBar"
+import { useEffect } from 'react';
 
 const pokemonList = [
   {
@@ -36,6 +37,10 @@ const pokemonList = [
       setSelectedPokemon(pokemon);
     };
 
+    useEffect(() => {
+      alert("Hello Pokemon Trainer :)");
+    }, []);
+    
   return (
     <div>
       <NavBar
